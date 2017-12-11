@@ -20,7 +20,7 @@ end
 # update chrony.conf file
 if node['platform_family'] == "debian"
   template '/etc/chrony/chrony.conf' do
-    source '/home/ubuntu/chef-repo/amazontimesync/templates/default/amazontimesync/debian_chrony.conf.erb'
+    source '/home/ubuntu/chef-repo/chef-cookbook-amazontimesync/templates/default/amazontimesync/debian_chrony.conf.erb'
     local true
     owner 'root'
     group 'root'
@@ -29,7 +29,7 @@ if node['platform_family'] == "debian"
   end
 elsif node['platform_family'] == "rhel"
   template '/etc/chrony.conf' do
-    source '/home/ec2-user/chef-repo/amazontimesync/templates/default/amazontimesync/rhel_chrony.conf.erb'
+    source '/home/ec2-user/chef-repo/chef-cookbook-amazontimesync/templates/default/amazontimesync/rhel_chrony.conf.erb'
     local true
     owner 'root'
     group 'root'
@@ -38,7 +38,7 @@ elsif node['platform_family'] == "rhel"
 end
 elsif node['platform_family'] == "suse"
   template '/etc/chrony.conf' do
-    source '/home/ec2-user/chef-repo/amazontimesync/templates/default/amazontimesync/suse_chrony.conf.erb'
+    source '/home/ec2-user/chef-repo/chef-cookbook-amazontimesync/templates/default/amazontimesync/suse_chrony.conf.erb'
     local true
     owner 'root'
     group 'root'
