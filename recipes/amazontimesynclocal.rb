@@ -22,7 +22,8 @@ end
 # update chrony.conf file
 if platformfamily == "debian"
   template '/etc/chrony/chrony.conf' do
-    source "amazontimesync/#{platformfamily}_chrony.conf.erb"
+    source "/home/ubuntu/chef-repo/chef-cookbook-amazontimesync/templates/default/amazontimesync/#{platformfamily}_chrony.conf.erb"
+    local true
     owner 'root'
     group 'root'
     mode '0644'
@@ -30,14 +31,14 @@ if platformfamily == "debian"
   end
 elsif platformfamily == "rhel" || platformfamily == "suse"
   template '/etc/chrony.conf' do
-    source "amazontimesync/#{platformfamily}_chrony.conf.erb"
+    source '/home/ec2-user/chef-repo/chef-cookbook-amazontimesync/templates/default/amazontimesync/#{platformfamily}_chrony.conf.erb'
+    local true
     owner 'root'
     group 'root'
     mode '0644'
     action :create
   end
 end
-
 # start chronyd service
 service 'chrony' do
   if platformfamily == "debian"
